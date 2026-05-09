@@ -1,0 +1,28 @@
+name: Run Virtual Browser
+on: [push, workflow_dispatch] # push par chalega ya aap manually bhi chala sakte hain
+
+jobs:
+  browser-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright and Dependencies
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Run Browser Script
+        run: node your-script.js
+
+      - name: Save Screenshot as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-output
+          path: screenshot.png
