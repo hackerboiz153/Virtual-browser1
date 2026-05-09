@@ -1,0 +1,9 @@
+{
+  "name": "github-virtual-browser",
+  "version": "1.0.0",
+  "description": "Running a browser in GitHub Actions",
+  "main": "your-script.js",
+  "dependencies": {
+    "playwright": "latest"
+  }
+}
